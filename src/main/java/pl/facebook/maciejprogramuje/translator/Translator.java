@@ -10,7 +10,7 @@ import java.util.TreeMap;
  * Created by m.szymczyk on 2017-08-28.
  */
 public class Translator {
-    private SortedMap<String, String> map = new TreeMap<>();
+    private Map<String, String> map = new HashMap<>();
 
     public Translator() {
         System.out.println("Start");
@@ -62,7 +62,7 @@ public class Translator {
     }
 
     public String findKey(String prefix) {
-        if(prefix.isEmpty()) {
+        if(prefix.isEmpty() || prefix.length() < 2) {
             return "";
         }
 
@@ -71,11 +71,9 @@ public class Translator {
 
         for (Map.Entry<String, String> e : map.entrySet()) {
             if (e.getKey().startsWith(prefix)) {
-                /*stringBuilder.append(e.getKey());
-                stringBuilder.append(": ");
+                stringBuilder.append(e.getKey());
+                stringBuilder.append(" : ");
                 stringBuilder.append(e.getValue());
-                stringBuilder.append("\n");*/
-                stringBuilder.append(e);
                 stringBuilder.append("\n");
                 System.out.println(stringBuilder.toString());
             }
