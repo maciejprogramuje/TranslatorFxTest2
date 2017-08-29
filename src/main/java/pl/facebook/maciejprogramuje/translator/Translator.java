@@ -36,7 +36,7 @@ public class Translator {
                         if (meaning.isEmpty()) {
                             meaning = " ";
                         }
-                        meaning = "(" + form + ") " + meaning;
+                        meaning = ": (" + form + ") " + meaning;
 
                         if (!map.containsKey(word)) {
                             map.put(word, meaning);
@@ -62,7 +62,7 @@ public class Translator {
     }
 
     public String findKey(String prefix) {
-        if(prefix.isEmpty() || prefix.length() < 2) {
+        if(prefix.isEmpty()) {
             return "";
         }
 
@@ -72,10 +72,10 @@ public class Translator {
         for (Map.Entry<String, String> e : map.entrySet()) {
             if (e.getKey().startsWith(prefix)) {
                 stringBuilder.append(e.getKey());
-                stringBuilder.append(" : ");
                 stringBuilder.append(e.getValue());
                 stringBuilder.append("\n");
-                System.out.println(stringBuilder.toString());
+                // printing result is very slow
+                //System.out.println(stringBuilder.toString());
             }
         }
 
